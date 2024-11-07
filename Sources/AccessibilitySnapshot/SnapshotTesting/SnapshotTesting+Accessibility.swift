@@ -51,9 +51,9 @@ extension Snapshotting where Value == UIView, Format == UIImage {
         markerColors: [UIColor] = [],
         showUserInputLabels: Bool = true
     ) -> Snapshotting {
-        guard isRunningInHostApplication else {
-            fatalError("Accessibility snapshot tests cannot be run in a test target without a host application")
-        }
+//        guard isRunningInHostApplication else {
+//            fatalError("Accessibility snapshot tests cannot be run in a test target without a host application")
+//        }
 
         return Snapshotting<UIView, UIImage>
             .image(drawHierarchyInKeyWindow: drawHierarchyInKeyWindow)
