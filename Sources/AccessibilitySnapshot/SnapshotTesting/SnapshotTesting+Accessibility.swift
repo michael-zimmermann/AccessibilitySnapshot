@@ -51,10 +51,6 @@ extension Snapshotting where Value == UIView, Format == UIImage {
         markerColors: [UIColor] = [],
         showUserInputLabels: Bool = true
     ) -> Snapshotting {
-//        guard isRunningInHostApplication else {
-//            fatalError("Accessibility snapshot tests cannot be run in a test target without a host application")
-//        }
-
         return Snapshotting<UIView, UIImage>
             .image(drawHierarchyInKeyWindow: drawHierarchyInKeyWindow)
             .pullback { view in
@@ -216,16 +212,6 @@ extension Snapshotting where Value == UIView, Format == UIImage {
                     fatalError("Failed to render snapshot image", file: file, line: line)
                 }
             }
-    }
-
-    // MARK: - Internal Properties
-
-    internal static var isRunningInHostApplication: Bool {
-        // The tests must be run in a host application in order for the accessibility properties to be populated
-        // correctly. The `UIApplication.shared` singleton is non-optional, but will be uninitialized when the tests are
-        // running outside of a host application, so we can use this check to determine whether we have a test host.
-        let hostApplication: UIApplication? = UIApplication.shared
-        return (hostApplication != nil)
     }
 
 }
